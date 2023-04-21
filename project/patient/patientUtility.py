@@ -76,7 +76,7 @@ def updatepatient_post():
             saver.save(os.path.join(current_app.config['UPLOAD_FOLDER'], pic_name))
 
         patient_details = Patient.query.filter_by(email = current_user.email).first()   
-        return render_template('patient/update_patient.html', name= 'patient', patient = patient_details) 
+        return redirect(url_for('patientUtility.patient'))
 
 # @patientUtility.route('/patient')
 # @login_required

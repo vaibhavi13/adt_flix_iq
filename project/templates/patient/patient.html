@@ -1414,12 +1414,6 @@ html{
           <a href="{{ url_for('patientUtility.updatepatient') }}" class="navbar-item">
               Profile
           </a>
-          <a href="{{ url_for('patientUtility.InsurancePackage') }}" class="navbar-item">
-              Insurance Packages
-          </a>
-          <a href="{{ url_for('patientUtility.viewAppointments') }}" class="navbar-item">
-              My Appointments
-          </a>
     
           {% endif %}
           {% if current_user.is_authenticated %}
@@ -1443,7 +1437,7 @@ html{
                             <div class="search-container">
                                 <form method="POST" action="/searchdoctor">
                                    
-                                    <b><label for="type">Type</label></b>
+                                    <b><label for="type">Show Type</label></b>
                                     <select id ="type" name="type">
                                     <option value="select"></option>
                                     {% for type in types %}  
@@ -1451,16 +1445,31 @@ html{
                                         {% endfor %}       
                                     </select>
 
-                                    <b><text>Title </text></b>
+                                    <b><text>Show Title</text></b>
                                         <input type="text" name="searchquery">
-
-                                    <b><text>Director </text></b>
+                         
+                                    <b><text>Actor</text></b>
                                     <input type="text" name="searchquery">
 
-                                    <b><text>Actor</text></b>
-                                        <input type="text" name="searchquery">
+                                    <b><text>Director</text></b>
+                                    <input type="text" name="searchquery">
 
+                                    <b><label for="genre">Genre</label></b>
+                                    <select id ="genre" name="genre">
+                                    <option value="select"></option>
+                                    {% for genre in genres %}  
+                                        <option value="{{ genre[0] }}">{{ genre[0] }}</option>
+                                        {% endfor %}       
+                                    </select>
                                         
+                                    
+                                    <b><label for="rating">Rating</label></b>
+                                    <select id ="rating" name="rating">
+                                    <option value="select"></option>
+                                    {% for rating in ratings %}  
+                                        <option value="{{ genre[0] }}">{{ rating[0] }}</option>
+                                        {% endfor %}       
+                                    </select>
 
                                     <b><label for="location">Location</label></b>
                                     <select id ="location" name="location">
@@ -1470,26 +1479,23 @@ html{
                                         {% endfor %}       
                                     </select>
 
-                                    <b><text>Doctor </text></b>
-                                        <input type="text" name="searchquery">
-    
-                                        <b><label for="disease">Diseases</label></b>
-                                        <select id ="disease" name="disease">
-                                        <option value="select"></option>
-                                        {% for disease in diseases %}  
-                                            <option value="{{ disease[0]}}">{{ disease[0] }}</option>
-                                            {% endfor %}       
-                                        </select>
-    
-                                        <b><label for="covid">Provide Covid Care</label></b>
-                                        <select id ="covid" name="covid">
-                                            <option value="select"></option>
-                                            <option value="YES">YES</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-    
+                                    <b><label for="release_year_range">Release year</label></b>
+                                    <select id ="release_year_range" name="release_year_range">
+                                    <option value="select"></option>
+                                    {% for release_year_range in release_year_ranges %}  
+                                        <option value="{{ release_year_range[0] }}">{{ release_year_range[0] }}</option>
+                                        {% endfor %}       
+                                    </select>
 
-    
+                                    
+                                    <b><label for="country">Country</label></b>
+                                    <select id ="country" name="country">
+                                    <option value="select"></option>
+                                    {% for country in countries %}  
+                                        <option value="{{ country[0] }}">{{ country[0] }}</option>
+                                        {% endfor %}       
+                                    </select>
+
                                         <button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i>
                                 </form>
 
@@ -1526,8 +1532,8 @@ html{
                       <li> <span><i class="fa fa-star" aria-hidden="true"></i></span></li>
                       <li class="rating">{{doctor[4]}}/5</li>
                   </ul>
-                  <a href="{{ url_for('patientUtility.bookAppointment',doctor_name=doctor[0],_external=true) }}">
-                    <button type="submit" name="button">Book Appointment</button>
+                  <a href="{{ url_for('patientUtility.updatepatient') }}">
+                    <button type="submit" name="button">Update Details</button>
                   </a>
                 </div>
                 
