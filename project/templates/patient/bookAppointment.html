@@ -1,0 +1,157 @@
+{% extends 'patient/patient.html' %}
+{% block modal%}
+<style>
+    .timeslot,.childtimeslot {
+  background-color: #00c09d;
+  width: 70px;
+  height: 20px;
+  color: white;
+  padding:3px;
+  margin-top: 1px;
+  font-size: 14px;
+  border-radius: 1px;
+  vertical-align: center;
+  text-align:center;
+  display: inline-block;
+}
+</style>
+
+<body onload="flashMessage()">
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: rgb(15, 15, 1)">Book Appointment</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/bookAppointmentPost/">
+          <!-- <form action="{{ url_for('patientUtility.bookAppointmentPost', token = doctor_name,_external=True)}}", method="post">  -->
+
+            <!-- <output name="doctors_list">"{{doctors_list}}"</output> -->
+            <div class="field">
+                <div class="control">
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label" style="color: rgb(14, 14, 1)">Over	the	past	14	days,	have	you	had	ANY	of	these	symptoms?</label>
+                    
+                    <p><input type="checkbox" id="vehicle1" name="vehicle1" value="cough">
+                    <label for="vehicle1" style="color: rgb(15, 15, 1)"> Dry Cough</label><br></p>
+
+                    <p><input type="checkbox" id="vehicle1" name="vehicle1" value="fatigue">
+                    <label for="vehicle1" style="color: rgb(15, 15, 1)"> Fatigue</label><br></p>
+                      
+                    <p><input type="checkbox" id="vehicle1" name="vehicle1" value="breath">
+                    <label for="vehicle1" style="color: rgb(15, 15, 1)"> Shortness	of	breath</label><br></p>
+                      
+                    <p><input type="checkbox" id="vehicle1" name="vehicle1" value="fever">
+                    <label for="vehicle1" style="color: rgb(15, 15, 1)"> High Fever</label><br></p>  
+                    
+                    <p><input type="checkbox" id="vehicle1" name="vehicle1" value="covidTest">
+                    <label for="vehicle1" style="color: rgb(15, 15, 1)">Is your covid test positive?</label><br></p>  
+                      
+                  </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label" style="color: rgb(15, 15, 1)">Appointment date</label>
+                        <input  placeholder="Select Date" type="text" onfocus="(this.type = 'date')"  name="Appointment_date" onclick =getTimeSlots() class="form-control" id="myDate" max="2022-12-31"  required >
+                        <input type="text" id = "docNameId" style="display:none;" name="doc_name" value="{{doctors_list}}">
+                    </div>
+                </div>
+            </div>
+            <!--<button type="button" onclick=getTimeSlots()>Show available time slots</button>-->
+            <!--<div id="toggle" style="display:none;">Hello</div>-->
+            
+            
+            <ul id="toggle1" style="display:none;">
+              <!-- <label for="recipient-name" class="col-form-label" style="color: rgb(15, 15, 1);text-align: left;">Select timeslot</label> -->
+                <select name="booked_slots" style ="border: solid;">
+                  {% for option in booked_slots %}
+                  <option value="{{ option }}">{{ option }}</option>
+                  {% endfor %}
+              </select> 
+              <button type="submit" style="background-color: aliceblue;">Book Appointment</button>
+             </ul>
+           
+            
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <a href="{{url_for('patientUtility.patient')}}" class="btn btn-secondary">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+{% endblock %}
+ 
+{% block script %}
+<script>
+$(document).ready(function(){
+  console.log("window is loaded");
+  $("#exampleModal").modal("show"); 
+})
+
+function flashMessage(){
+  //apt_date = document.getElementById("myDate") 
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  } 
+  console.log(dd)   
+  today = yyyy + '-' + mm + '-' + dd;
+  document.getElementById("myDate").setAttribute("min", today);
+  // //document.getElementById("myDate").setAttribute("placeholder", 'dd/mm/yyyy');
+  
+
+  if ("{{ msg }}" == "Error") {
+        alert("Selected timeslot is not available, please book different timeslot");
+      }
+  else if("{{ msg }}" == "Success") {
+        alert("Appointment booked successfully");
+        window.location.href='/patient'
+      }
+}
+
+function book(){
+  var x = "{{ msg }}"
+  console.log(x)
+  if ("{{ msg }}" == "") {
+        alert("Appointment booked successfully");
+  }
+
+  // alert('Appointment booked successfully')
+  // window.location.href='patientUtility.patient'
+  // $.post( "/bookAppointment", {
+  //     aptDetails: JSON.stringify(outputData)
+  //   }, function(err, req, resp){
+  //     window.location.href = "/patient/" 
+  //   });
+
+}
+
+function getTimeSlots(){
+    document.getElementById('toggle1').style.display = "";
+    
+}
+ 
+
+
+ 
+</script>
+{% endblock %}
+  <!--<form class="verticalform">
+    <input type="text" class="form-control dp" />
+    <input type="datetime-local" name="Date" required/>
+    </form>-->
+   
+ 
+ 
+

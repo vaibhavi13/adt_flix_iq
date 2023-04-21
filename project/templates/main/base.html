@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flask Auth Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    
+
+
+</head>
+
+<body>
+    <section class="hero is-primary is-fullheight">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+
+                            {% if (current_user.is_authenticated  and name == 'patient') %}
+                            <a href="{{ url_for('patientUtility.patient') }}" class="navbar-item">
+                                Home
+                            </a>
+                            <a href="{{ url_for('patientUtility.updatepatient') }}" class="navbar-item">
+                                Profile
+                            </a>
+                            <a href="{{ url_for('patientUtility.InsurancePackage') }}" class="navbar-item">
+                                Insurance Packages
+                            </a>
+                            <a href="{{ url_for('patientUtility.viewAppointments') }}" class="navbar-item">
+                                My Appointments
+                            </a>
+
+                            {% endif %}
+                            {% if (current_user.is_authenticated  and name == 'doctor') %}
+                            <a href="{{ url_for('doctorUtility.doctor') }}" class="navbar-item">
+                                Profile
+                            </a>
+                            {% endif %}
+                            {% if (current_user.is_authenticated  and Name == "insuranceProvider") %}
+                            <a href="{{ url_for('insuranceProviderUtility.insuranceProvider') }}" class="navbar-item">
+                                Profile
+                            </a>
+                            <a href="{{ url_for('insuranceProviderUtility.createInsurancePackage') }}" class="navbar-item">
+                                Create Package
+                            </a>
+                            {% endif %}
+                            {% if (current_user.is_authenticated  and name == 'doctor') %}
+                            <a href="{{ url_for('doctorUtility.doctor') }}" class="navbar-item">
+                                Profile
+                            </a>
+                            {% endif %}
+
+                            {% if not current_user.is_authenticated %}
+                            <a href="{{ url_for('main.index') }}" class="navbar-item">
+                                Home
+                            </a>
+                            <a href="{{ url_for('routes.login') }}" class="navbar-item">
+                                Login
+                            </a>
+                            <a href="{{ url_for('routes.signup') }}" class="navbar-item">
+                                Sign Up
+                            </a>
+                            {% endif %}
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('routes.logout') }}" class="navbar-item">
+                                Logout
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-body" style="align-items:normal;">
+            <div class="container has-text-centered">
+               {% block content %}
+               {% endblock %}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

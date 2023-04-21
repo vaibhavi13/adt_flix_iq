@@ -1,0 +1,132 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<h1 class="title">
+    Please update your details here
+</h1>
+<div class="box">
+<form method="POST" action="/updatepatient" enctype="multipart/form-data">
+    <form method="POST" action="/updatepatient" enctype="multipart/form-data">
+        
+            <div class="container rounded bg-white mt-5 mb-5">
+
+                <div class="row">
+                    <div class="col-md-3 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            {% if (patient.profile_picture) %}
+                            <img class="rounded-circle mt-5" width="150px" src="{{url_for('static', filename='images/' + patient.profile_picture)}}"></div>
+                            {% else %}
+                            <img class="rounded-circle mt-5" width="150px" src="{{url_for('static', filename='images/default_profile_pic.jpg')}}"></div>
+
+                            {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control-file" type="file" name="inputFile">
+                    </div>
+
+
+                    <div class="col-md-5 border-right">
+                        
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="fname">First Name</label>
+                                    <input class="input is-small" type="text" id="fname" name="firstname" value = "{{current_user.first_name}}" placeholder="Enter your first name.." autofocus="">
+
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="lname">Last Name</label>
+                                    <input class="input is-small" type="text" id="lname" name="lastname" value = "{{current_user.last_name}}" placeholder="Enter your last name.." autofocus="">
+
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="lname">EmailId</label>
+                                    <input class="input is-small" type="text" id="email" name="email" value = "{{current_user.email}}" placeholder="Enter your Email-id.." autofocus="">
+
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="age">Insurance package balance</label>
+                                    <input class="input is-small" type="text" id="price" name="price" value = "{{patient.price_package}}" disabled="true" autofocus="">
+
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="age">Age</label>
+                                    <input class="input is-small" type="text" id="age" name="age" value = "{{patient.age}}" placeholder="Enter your Age.." autofocus="">
+
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="gender">Gender</label>
+                                    <select id ="Gender" name="gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        {% if (patient.gender) %}
+                                        <option value="selected value" selected>"{{patient.gender}}"</option>
+                                        {% else %}
+                                        <option value="selected value" selected>Select..</option>
+                                        {% endif %}
+                                        
+                                      </select>
+                                </div>
+                            </div>
+
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="weight">Weight</label>
+                                    <input class="input is-small" type="text" id="weight" name="weight" value = "{{patient.weight}}" placeholder="Enter your weight.." autofocus="">
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="height">Height</label>
+                                    <input class="input is-small" type="text" id="height" name="height" value = "{{patient.height}}" placeholder="Enter your height in cms.." autofocus="">
+
+                                </div>
+                            </div>
+
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="Illness">Current Illness</label>
+                                    <input class="input is-small" type="text" id="illness" name="illness" value = "{{patient.currentillness}}" placeholder="Enter your current illness" autofocus="">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <label for="Additionalcomments">Additional Comments</label>
+                                    <input class="textarea" type ="text" id="Additionalcomments" name="Additionalcomments" placeholder="Enter Additional details here.." style="height:200px" autofocus="">
+                                </div>
+                            </div>
+
+                            <button class="button is-block is-info is-large is-fullwidth">Submit</button>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
+            </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,2 +1,5 @@
-# adt_flix_iq
-ADT Project FLIX IQ
+# SE-Curebox-28
+
+pip install -U Flask Authlib requests
+
+pip install Flask Flask-WTF

@@ -1,0 +1,38 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<h1>Doctor's Page</h1>
+<h1 class="title">
+  Hello, {{ first_name }} , Please update your details here 
+</h1>
+<div class="box">
+<form method="POST" action="/updateProfile">
+    <form method="POST" action="/updateProfile">
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="number" name="age" placeholder="Age">
+            </div>
+        </div>
+        <div class="field">
+            <legend>Are you looking for covid assistance?</legend>
+                <label for="no">No</label>
+                <input type="checkbox" name="covid_check" id="no" value="no" checked>
+                <label for="yes">Yes</label>
+                <input type="checkbox" name="covid_check" id="yes" value="yes">
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="diseases" placeholder="Do you have any underlying diseases?" autofocus="">
+            </div>
+        </div>
+        <div class="field">
+            <legend>Are you Diabetic?</legend>
+                <label for="no">No</label>
+                <input type="checkbox" name="diabetic_check" id="no" value="no" checked>
+                <label for="yes">Yes</label>
+                <input type="checkbox" name="diabetic_check" id="yes" value="yes">
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">Submit</button>
+    </form>
+</div>
+{% endblock %}
