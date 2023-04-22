@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+*, body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+    height: 100%;
+    background-color: #e1e9ef;
+    overflow: hidden;
+}
+
+
+.form-holder {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+}
+
+.form-holder .form-content {
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.form-content .form-items {
+    border: 3px solid #fff;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 540px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.form-content h3 {
+    color: rgb(6, 72, 135);
+    text-align: left;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-content h3.form-title {
+    margin-bottom: 30px;
+}
+
+.form-content p {
+    color: rgb(6, 72, 135);
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+
+.form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+    color: rgb(6, 72, 135);
+}
+
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+    width: 100%;
+    padding: 9px 10px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgb(6, 72, 135);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: #495056;
+    outline: none !important;
+    border: none !important;
+     box-shadow: none;
+}
+.form-content button,a{
+      background-color: rgba(244, 238, 238, 0.912);
+      border-radius: 8px;
+      border-width: 0;
+      color: rgb(6, 72, 135);
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 10px 12px;
+      text-align: center;
+      transition: all 200ms;
+      vertical-align: baseline;
+      white-space: nowrap;
+}
+
+
+.form-content textarea {
+    position: static !important;
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgb(6, 72, 135);
+    outline: none;
+    resize: none;
+    height: 120px;
+    -webkit-transition: none;
+    transition: none;
+    margin-bottom: 14px;
+}
+
+.form-content textarea:hover, .form-content textarea:focus {
+    border: 0;
+    background-color: #ebeff8;
+    color: rgb(6, 72, 135);
+}
+
+.mv-up{
+    margin-top: -9px !important;
+    margin-bottom: 8px !important;
+}
+
+.invalid-feedback{
+    color: #ff606e;
+}
+
+.valid-feedback{
+   color: #2acc80;
+}
+    </style>
+
+</head>
+<body>
+    
+<!-- form starts here -->
+<form method="POST" action="/createRecord" enctype="multipart/form-data", class="form-body">  
+        <div class="row">
+            <div class="form-holder"> 
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Create Insurance Package</h3>
+                        <p>Fill in the data below</p>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" name="package_name" placeholder="Insurance Package Name" required>
+                            <input class="form-control" type="text" name="package_description" placeholder="Description">
+                            <div class="field">
+                                <div class="control">
+                                    <label for="age">Age</label>
+                                    <select id ="age" name="age">
+                                        <option value="0-20">0-20</option>
+                                        <option value="20-30">20-30</option>
+                                        <option value="30-40">30-40</option>
+                                        <option value="40-50">40-50</option>
+                                        <option value="50-60">50-60</option>
+                                        <option value="60-100">60-100</option>
+                                    </select>
+                                </div>
+                                <input class="form-control" type="text" name="insurance_duration" placeholder="Duration of the Insurance Package in Years">
+                                <input class="form-control" type="text" name="price" placeholder="Price of the Insurance Package in dollars">
+                                <button class="button is-block is-info is-large is-fullwidth">Submit</button>
+                                <a href="{{ url_for('netflixUtility.createRecord') }}">
+                                    Back
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                </div>
+            </div>
+        </div>
+</form>
+</body>
+</html>

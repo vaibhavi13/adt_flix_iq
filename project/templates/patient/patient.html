@@ -1414,7 +1414,9 @@ html{
           <a href="{{ url_for('patientUtility.updatepatient') }}" class="navbar-item">
               Profile
           </a>
-    
+          <a href="{{ url_for('netflixUtility.createRecord') }}" class="navbar-item">
+            Create Record
+         </a>
           {% endif %}
           {% if current_user.is_authenticated %}
           <a href="{{ url_for('routes.logout') }}" class="navbar-item">
@@ -1533,7 +1535,10 @@ html{
                       <li class="rating">{{doctor[4]}}/5</li>
                   </ul>
                   <a href="{{ url_for('patientUtility.updatepatient') }}">
-                    <button type="submit" name="button">Update Details</button>
+                    <button type="submit" name="button">Update Record- Demo</button>
+                  </a>   
+                  <a href="{{ url_for('netflixUtility.updateRecord') }}">
+                    <button type="submit" name="button">Update Record</button>
                   </a>
                 </div>
                 
