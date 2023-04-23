@@ -172,29 +172,29 @@ html, body {
             <div class="form-holder"> 
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Create Insurance Package</h3>
-                        <p>Fill in the data below</p>
+                        <h3>Create Record</h3>
                         <div class="col-md-12">
-                            <input class="form-control" type="text" name="package_name" placeholder="Insurance Package Name" required>
-                            <input class="form-control" type="text" name="package_description" placeholder="Description">
-                            <div class="field">
-                                <div class="control">
-                                    <label for="age">Age</label>
-                                    <select id ="age" name="age">
-                                        <option value="0-20">0-20</option>
-                                        <option value="20-30">20-30</option>
-                                        <option value="30-40">30-40</option>
-                                        <option value="40-50">40-50</option>
-                                        <option value="50-60">50-60</option>
-                                        <option value="60-100">60-100</option>
-                                    </select>
-                                </div>
-                                <input class="form-control" type="text" name="insurance_duration" placeholder="Duration of the Insurance Package in Years">
-                                <input class="form-control" type="text" name="price" placeholder="Price of the Insurance Package in dollars">
-                                <button class="button is-block is-info is-large is-fullwidth">Submit</button>
-                                <a href="{{ url_for('netflixUtility.createRecord') }}">
-                                    Back
-                                </a>
+                            <div class="control">
+                                <label for="type">Show Type</label>
+                                <select id ="type" name="type">
+                                    <option value="TV Show">TV Show</option>
+                                    <option value="Movie">Movie</option>
+                                </select>
+                            </div>
+                            <input class="form-control" type="text" name="title" placeholder="Enter Title" required>
+                            <input class="form-control" type="text" name="director" placeholder="Enter Director" required>
+                            <input class="form-control" type="text" name="actor" placeholder="Enter Actors" required>
+                            <input class="form-control" type="text" name="country" placeholder="Enter Country" required>
+                            <input class="form-control" type="text" name="date_added" placeholder="Enter Date added on Netflix" required>
+                            <input class="form-control" type="text" name="rating" placeholder="Enter Rating" required>
+                            <input class="form-control" type="text" name="duration" placeholder="Enter Duration" required>
+                            <input class="form-control" type="text" name="genre" placeholder="Enter Genre" required>
+                            <input class="form-control" type="text" name="description" placeholder="Enter Description" required>
+                            <br>
+                            <button class="button is-block is-info is-large is-fullwidth">Submit</button>
+                            <a href="{{ url_for('patientUtility.patient') }}">
+                                Back
+                            </a>
                             </div>
                         </div>
                     </div>
