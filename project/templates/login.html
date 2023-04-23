@@ -32,7 +32,7 @@ section .color:nth-child(1)
     top: -350px;
     width: 900px;
     height: 600px;
-    background: #ff359b;
+    background: red;
 }
 section .color:nth-child(2)
 {
@@ -40,7 +40,7 @@ section .color:nth-child(2)
     left: 100px;
     width: 500px;
     height: 500px;
-    background: #00ffd5;
+    background: black;
 }
 section .color:nth-child(3)
 {
@@ -48,7 +48,7 @@ section .color:nth-child(3)
     right: 100px;
     width: 700px;
     height: 400px;
-    background: #cccbd6;
+    background: white;
 }
 .box{
     position:relative;
@@ -58,10 +58,10 @@ section .color:nth-child(3)
     position: absolute;
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.5);
-    border-right: 1px solid rgba(255,255,255,0.2);
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.1);
+    border: 1px solid red;
+    border-right: 1px solid white;
+    border-bottom: 1px solid black;
+    background: black;
     border-radius: 10px;
     animation: animate 10s linear infinite;
     animation-delay: calc(-1s * var(--i));
@@ -170,7 +170,7 @@ section .color:nth-child(3)
     color: rgb(31, 30, 30);
 }
 .form .inputBox input[type="submit"]{
-    background: rgb(31, 148, 156);
+    background: white;
     color: #666;
     max-width: 100px;
     cursor: pointer;
@@ -333,26 +333,12 @@ section .color:nth-child(3)
 <body>
     <nav role="navigation">
         <div id="menuToggle">
-          <!--
-          A fake / hidden checkbox is used as click reciever,
-          so you can use the :checked selector on it.
-          -->
-          <input type="checkbox" />
-          
-          <!--
-          Some spans to act as a hamburger.
-          
-          They are acting like a real hamburger,
-          not that McDonalds stuff.
-          -->
+          <input type="checkbox" />     
+
           <span></span>
           <span></span>
           <span></span>
           
-          <!--
-          Too bad the menu has to be inside of the button
-          but hey, it's pure CSS magic.
-          -->
           <ul id="menu">
             <a href="{{ url_for('main.index') }}"><li>Home</li></a>
           </ul>
@@ -367,11 +353,7 @@ section .color:nth-child(3)
         <div class="color">
          </div>  
         <div class="box">
-            <div class="square" style="--i:0"></div>
-            <div class="square" style="--i:1"></div>
-            <div class="square" style="--i:2"></div>
-            <div class="square" style="--i:3"></div>
-            <div class="square" style="--i:4"></div>
+           
             <div class="container">
                 <div class="form">
                     <h2>Login Form</h2>
@@ -394,7 +376,7 @@ section .color:nth-child(3)
                             <div class="inputBox">
                                 <input type="submit" value="Login">
                             </div>
-                            <p class="forget">Forget password ?<a href="/resetPassword/"> Click Here </a></p>
+                            <p class="forget">Forgot password ?<a href="/resetPassword/"> Click Here </a></p>
                             <p class="forget">Don't have an account ?<a href="{{ url_for('routes.signup') }}"> Sign up</a></p>
                     </form>
                 </div>

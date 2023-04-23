@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cure Box Application</title>
+    <title>Flix IQ</title>
+    
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -12,7 +13,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
     :root{
-        --green:#16a085;
+        --green:#FF0000;
         --black:#444;
         --light-color:#777;
         --box-shadow:.5rem .5rem 0 rgba(22, 160, 133, .2);
@@ -94,7 +95,7 @@
     }
 
     .header{
-        padding:2rem 9%;
+        padding:0.8rem 8%;
         position: fixed;
         top:0; left: 0; right: 0;
         z-index: 1000;
@@ -102,26 +103,19 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: #fff;
+        background: black;
     }
 
-    .header .logo{
-        font-size: 2.5rem;
-        color: var(--black);
-    }
-
-    .header .logo i{
-        color: var(--green);
-    }
+    
 
     .header .navbar a{
         font-size: 1.7rem;
-        color: var(--light-color);
+        color: white;
         margin-left: 2rem;
     }
 
     .header .navbar a:hover{
-        color: var(--green);
+        color: red;
     }
 
     #menu-btn{
@@ -152,6 +146,7 @@
 
     .home .content{
         flex:1 1 45rem;
+        text-align: center;
     }
 
     .home .content h3{
@@ -198,7 +193,7 @@
             box-shadow: var(--box-shadow);
             width: 30rem;
             border: var(--border);
-            background: #fff;
+            background: black;
             transform: scale(0);
             opacity: 0;
             transform-origin: top right;
@@ -235,7 +230,9 @@
 
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> CureBox </a>
+    <div class="logo">
+        <img src="static/images/flix_iq_logo.png" alt="" style="  height: 20%; max-height: 70px;">
+    </div>
 
     <nav class="navbar">
       <a href="{{ url_for('main.index') }}" class="navbar-item">
@@ -245,12 +242,6 @@
       {% if (current_user.is_authenticated  and name == 'patient') %}
       <a href="{{ url_for('patientUtility.updatepatient') }}" class="navbar-item">
           Profile
-      </a>
-      <a href="{{ url_for('insuranceProviderUtility.insuranceProvider') }}" class="navbar-item">
-          Insurance Packages
-      </a>
-      <a href="{{ url_for('patientUtility.bookAppointment') }}" class="navbar-item">
-          Book Appointment
       </a>
 
       {% endif %}
@@ -264,15 +255,12 @@
       <!-- <a href="{{ url_for('doctorUtility.doctor') }}" class="navbar-item">
           Profile
       </a> -->
-      <a href="{{ url_for('insuranceProviderUtility.insuranceProvider') }}" class="navbar-item">
-          Insurance Packages
-      </a>
       {% endif %}
 
 
       {% if not current_user.is_authenticated %}
       <a href="{{ url_for('routes.login') }}" class="navbar-item">
-          Login
+          Sign In
       </a>
       <a href="{{ url_for('routes.signup') }}" class="navbar-item">
           Sign Up
@@ -291,12 +279,12 @@
 <section class="home" id="home">
 
   <div class="image">
-      <img src="static/images/home-img.svg" alt="">
+      <img src="static/images/movie_index.jpg" alt="" style ="max-height = 70px">
   </div>
 
   <div class="content">
       <h3>Welcome to FLIX IQ</h3>
-      <p>Hang tight to enter the world of Netflix Data</p>
+      <p>A Clever Guide to Netflix Movies and TV Shows</p>
   </div>
 
 </section>

@@ -17,9 +17,8 @@ def create_app():
     app = Flask(__name__)
     UPLOAD_FOLDER = 'project/static/images/'
     app.config['SECRET_KEY'] = 'root'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://<user>:<password>@localhost:5432/PatientInsuranceManagement'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Adt12345@localhost:5432/PatientInsuranceManagement'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    db.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
     login_manager.session_protection = "strong"

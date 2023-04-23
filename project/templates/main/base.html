@@ -1,24 +1,138 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask Auth Example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    
-
+    <title>FLix IQ</title>
 
 </head>
+<style>
+    :root{
+        --green:#FF0000;
+        --black:#444;
+        --light-color:#777;
+        --box-shadow:.5rem .5rem 0 rgba(22, 160, 133, .2);
+        --text-shadow:.4rem .4rem 0 rgba(0, 0, 0, .2);
+        --border:.2rem solid var(--green);
+    }
+
+    *{
+        font-family: 'Poppins', sans-serif;
+        margin:0; padding: 0;
+        box-sizing: border-box;
+        outline: none; border: none;
+        text-transform: capitalize;
+        transition: all .2s ease-out;
+        text-decoration: none;
+    }
+
+    html{
+        font-size: 62.5%;
+        overflow-x: hidden;
+        scroll-padding-top: 7rem;
+        scroll-behavior: smooth;
+    }
+
+    .header{
+        padding:0.8rem 8%;
+        position: fixed;
+        top:0; left: 0; right: 0;
+        z-index: 1000;
+        box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: black;
+    }
+
+    
+
+    .header .navbar a{
+        font-size: 1.7rem;
+        color: white;
+        margin-left: 2rem;
+    }
+
+    .header .navbar a:hover{
+        color: red;
+    }
+
+
+    /* media queries  */
+    @media (max-width:991px){
+
+        html{
+            font-size: 55%;
+        }
+
+        .header{
+            padding: 2rem;
+        }
+
+        section{
+            padding:2rem;
+        }
+
+    }
+
+    @media (max-width:768px){
+
+        #menu-btn{
+            display: initial;
+        }
+
+        .header .navbar{
+            position: absolute;
+            top:115%; right: 2rem;
+            border-radius: .5rem;
+            box-shadow: var(--box-shadow);
+            width: 30rem;
+            border: var(--border);
+            background: black;
+            transform: scale(0);
+            opacity: 0;
+            transform-origin: top right;
+            transition: none;
+        }
+
+        .header .navbar.active{
+            transform: scale(1);
+            opacity: 1;
+            transition: .2s ease-out;
+        }
+
+        .header .navbar a{
+            font-size: 2rem;
+            display: block;
+            margin:2.5rem;
+        }
+
+    }
+
+    @media (max-width:450px){
+
+        html{
+            font-size: 50%;
+        }
+
+    }
+</style>
+
 
 <body>
+   <div class="header"> 
     <section class="hero is-primary is-fullheight">
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
-
+                            <div class="logo">
+                                <img src="static/images/flix_iq_logo.png" alt="" style="  height: 20%; max-height: 70px;">
+                            </div>
+                        
                             {% if (current_user.is_authenticated  and name == 'patient') %}
                             <a href="{{ url_for('patientUtility.patient') }}" class="navbar-item">
                                 Home
@@ -26,13 +140,6 @@
                             <a href="{{ url_for('patientUtility.updatepatient') }}" class="navbar-item">
                                 Profile
                             </a>
-                            <a href="{{ url_for('patientUtility.InsurancePackage') }}" class="navbar-item">
-                                Insurance Packages
-                            </a>
-                            <a href="{{ url_for('patientUtility.viewAppointments') }}" class="navbar-item">
-                                My Appointments
-                            </a>
-
                             {% endif %}
                             {% if (current_user.is_authenticated  and name == 'doctor') %}
                             <a href="{{ url_for('doctorUtility.doctor') }}" class="navbar-item">
@@ -74,8 +181,9 @@
                 </div>
             </nav>
         </div>
+    </div>
 
-        <div class="hero-body" style="align-items:normal;">
+    <div class="hero-body" style="align-items:normal;">
             <div class="container has-text-centered">
                {% block content %}
                {% endblock %}
@@ -83,5 +191,7 @@
         </div>
     </section>
 </body>
+
+
 
 </html>
