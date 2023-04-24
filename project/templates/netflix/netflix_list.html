@@ -1516,27 +1516,35 @@ html{
 
 			</section>
       <section class="card-view">
-        {% for record in records %}
         <div class="container">
           <div class="box">
 
             <div class="col-lg-6 profile-box">
               <div class="media d-flex">
                 <img style="width: 160px; height: 200px;" class ="mr-4" src="static/images/netflix_collage.jpg" alt="">
-                <div class="media-body flex-grow-1">
-                  
-                  <h3>{{record[0]}} {{record[1]}}  </h3>
+                <div class="media-body flex-grow-1">         
+                  <h2> Type : type_text</h2>
                   <br>
-                  <h2>Description {{record[2]}} </h3>
-                  
-
-                  <ul>
-                    {%for i in range(0,record[4])%}
-                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                      {% endfor %}
-                      <li> <span><i class="fa fa-star" aria-hidden="true"></i></span></li>
-                      <li class="rating">{{record[4]}}/5</li>
-                  </ul>
+                  <h2> Title : title_text</h2>
+                  <br>
+                  <h2> Director : director_text</h2>
+                  <br>
+                  <h2> Actor : actor_text</h2>
+                  <br>
+                  <h2> Produced in countries : countries_text</h2>
+                  <br>
+                  <h2> Date added : date_added_text</h2>
+                  <br>
+                  <h2> Release year : release_year_text</h2>
+                  <br>
+                  <h2> Rating : rating_text</h2>
+                  <br>
+                  <h2> Duration : duration_text</h2>
+                  <br>
+                  <h2> Genres : genres_text</h2>
+                  <br>
+                  <h2> Description : description_text</h2>
+                  <br>
                   <a href="{{ url_for('netflixUtility.updateRecord') }}">
                     <button type="submit" name="button" style="background-color :black; color: white;">Update Record</button>
                 </a>
@@ -1546,7 +1554,6 @@ html{
         </div>
         </div>
       </div>
-        {% endfor %} 
       </section>
       
 
