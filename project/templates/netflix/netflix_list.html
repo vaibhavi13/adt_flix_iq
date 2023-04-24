@@ -1031,7 +1031,7 @@ button.bg-danger:hover {
     margin: -20px 13px ;
 }
 
-.doctor-profile{
+.card-view{
     background-color: #f8f9fa;
 }
 
@@ -1084,10 +1084,10 @@ button.bg-danger:hover {
     font-size: 14px;
     margin-top: -10px;
 }
-.doctor-profile{
+.card-view{
   max-height: max-content;
 }
-.doctor-profile .box-container{
+.card-view .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:2rem;
@@ -1252,7 +1252,7 @@ button.bg-danger:hover {
     .submit-section.proceed-btn {
         margin-bottom: 20px;
     }
-    .section-search, .section-doctor, .section-features {
+    .section-search, .section-features {
         padding: 50px 0;
     }
     .slick-next {
@@ -1515,8 +1515,8 @@ html{
 				</div>
 
 			</section>
-      <section class="doctor-profile">
-        {% for doctor in doctors %}
+      <section class="card-view">
+        {% for record in records %}
         <div class="container">
           <div class="box">
 
@@ -1525,17 +1525,17 @@ html{
                 <img style="width: 160px; height: 200px;" class ="mr-4" src="static/images/netflix_collage.jpg" alt="">
                 <div class="media-body flex-grow-1">
                   
-                  <h3>{{doctor[0]}} {{doctor[1]}}  </h3>
+                  <h3>{{record[0]}} {{record[1]}}  </h3>
                   <br>
-                  <h2>Description {{doctor[2]}} </h3>
+                  <h2>Description {{record[2]}} </h3>
                   
 
                   <ul>
-                    {%for i in range(0,doctor[4])%}
+                    {%for i in range(0,record[4])%}
                       <li><i class="fa fa-star" aria-hidden="true"></i></li>
                       {% endfor %}
                       <li> <span><i class="fa fa-star" aria-hidden="true"></i></span></li>
-                      <li class="rating">{{doctor[4]}}/5</li>
+                      <li class="rating">{{record[4]}}/5</li>
                   </ul>
                   <a href="{{ url_for('netflixUtility.updateRecord') }}">
                     <button type="submit" name="button" style="background-color :black; color: white;">Update Record</button>

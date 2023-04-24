@@ -20,10 +20,10 @@ netflixUtility = Blueprint('netflixUtility', __name__)
 @login_required
 def viewNetflix():
     print('Currently in viewNetflix')
-   #records = db.engine.execute("select u.first_name,u.last_name,d.fees,h.location, (case when d.rating is null Then 0 else d.rating end) as rating from doctor d natural join public.user u,hospital h where d.hospital_id = h.id;")
+    #records = db.engine.execute("select * from netflix")
     print('After records')
-    #diseases = db.engine.execute("select name from disease;")
-    #locations = db.engine.execute("select distinct h.location from hospital h join doctor d on h.id = d.hospital_id order by 1")
+    #countries = db.engine.execute("select country_name from country;")
+    #genres = db.engine.execute("select * from genres")
     return render_template('netflix/netflix_list.html')
 
 
@@ -40,26 +40,17 @@ def searchNetflix():
     rating = request.form.get('rating')
     genre = request.form.get('genre')
    
-    searchquery = request.form.get('searchquery')
-    disease = request.form.get('disease')
-    covid_care = request.form.get('covid')
-    location = request.form.get('location')
-    query = getQuery(searchquery,disease,covid_care,location)
+    query = getQuery(type,title,director,actor,country,release_year,rating,genre)
     records = db.engine.execute(query)
     print(records)
-    diseases = db.engine.execute("select name from disease;")
-    locations = db.engine.execute("select distinct h.location from hospital h join doctor d on h.id = d.hospital_id order by 1")
-    return render_template('patient/patient.html', name=current_user.first_name, doctors = records ,diseases = diseases, locations = locations)
+    genres = db.engine.execute("select * from genres;")
+    return render_template('netflix/netflix_list.html', genres = genres)
 
 
 #@netflixUtility.route('/updateRecord/<string:show_id>')
 @netflixUtility.route('/updateRecord/')
 @login_required
 def updateRecord():
-    # record_details = Record.query.filter_by(show_id = show_id).first()
-    # return render_template('netflix/update_record.html', record = record_details)
-    # patient_details = Patient.query.filter_by(email = current_user.email).first()
-    # return render_template('patient/update_patient.html', name= 'patient', patient = patient_details)
     return render_template('netflix/record.html')
 
 
@@ -112,27 +103,8 @@ def createRecord_post():
     db.session.add(show_genre_obj)
     db.session.commit()
     print("\nall objects added")
-    return redirect(url_for('patientUtility.patient'))
+    return redirect(url_for('netflixUtility.viewNetflix'))
 
 
-def getQuery(searchquery,disease,covid_care,location):
-        # print('searchquery is ',searchquery)
-        # print('disease is ',disease)
-        # print('covid_care is ',covid_care)
-        # print('location is ',location)
-        query = "select distinct u.first_name ,u.last_name, doc.fees, h.location,  (case when doc.rating is null Then 0 else doc.rating end) as rating , doc.profile_pic from doctor_disease dd natural join doctor doc natural join public.user u , hospital h "
-        queryCondition = "where 1 = 1 and doc.hospital_id = h.id "
-        if(len(searchquery) > 0):
-           queryCondition += " and UPPER(u.first_name) like UPPER('" + searchquery + "')";
-        if(disease != 'select'):
-           queryCondition += " and dd.doctor_id = doc.id and dd.disease_id = (select d.id from disease d where d.name = '" + disease + "')";    
-        covid_care_boolVal = False
-        if covid_care != 'select':
-                if covid_care == 'YES':
-                     covid_care_boolVal = True
-                queryCondition += " and doc.provide_covid_care = " + str(covid_care_boolVal)
-        if(location != 'select'):
-           queryCondition += " and h.location = '" + location + "' ";     
-        query += queryCondition + " ;";    
-        print("formulated query is ----------- "+ query);    
-        return query;
+def getQuery(type,title,director,actor,country,release_year,rating,genre):
+    return "";
