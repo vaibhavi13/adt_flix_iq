@@ -45,6 +45,10 @@ def create_app():
     from project.common.commonUtility import commonUtility as commonUtility_blueprint
     app.register_blueprint(commonUtility_blueprint)
 
+    from project.netflix.netflixUtility import netflixUtility as netflixUtility_blueprint
+    app.register_blueprint(netflixUtility_blueprint)
+
+
     #from project import db, create_app, models
     with app.app_context():
         db.create_all()

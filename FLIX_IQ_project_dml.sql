@@ -200,15 +200,14 @@ select * from netflix_data;
 
 drop table netflix;
 CREATE TABLE netflix (
-    show_id     varchar(20) PRIMARY KEY,
+    show_id     varchar(50) PRIMARY KEY,
     show_type   varchar(20),
     title       varchar(500),
     date_added   date ,
 	release_year integer,
 	rating       varchar(50),
 	duration     varchar(50),
-	description  varchar(1000),
-	foreign key(show_id) references netflix_data(show_id));
+	description  varchar(1000));
 
 
 INSERT INTO netflix (show_id, show_type, title, date_added, release_year, rating, duration, description)
@@ -224,7 +223,7 @@ drop table if exists actor ;
 CREATE TABLE actor(show_id varchar(50) NOT NULL,
 	              actor_name varchar(1000),    
 				  primary key(show_id,actor_name),   
-                  foreign key(show_id) references netflix_data(show_id));
+                  foreign key(show_id) references netflix(show_id));
 
 INSERT INTO actor (show_id, actor_name)
 SELECT show_id, TRIM(unnest(string_to_array(actor, ','))) AS actor_name
@@ -241,7 +240,7 @@ drop table if exists director;
 CREATE TABLE director(show_id varchar(50) NOT NULL,
 	              director_name varchar(100),
 				  primary key(show_id,director_name),
-                  foreign key(show_id) references netflix_data(show_id));
+                  foreign key(show_id) references netflix(show_id));
 
 INSERT INTO director (show_id, director_name)
 SELECT show_id, TRIM(unnest(string_to_array(director, ','))) AS director_name
@@ -257,7 +256,7 @@ drop table if exists country;
 CREATE TABLE country(show_id varchar(50) NOT NULL,
 	              country_name varchar(100), 
 				  primary key(show_id,country_name),
-                  foreign key(show_id) references netflix_data(show_id));
+                  foreign key(show_id) references netflix(show_id));
 
 INSERT INTO country (show_id, country_name)
 SELECT show_id, TRIM(unnest(string_to_array(country, ','))) AS country_name
@@ -297,7 +296,7 @@ drop table if exists show_genre;
 CREATE TABLE show_genre(show_id varchar(50) NOT NULL,
 	              genre_id integer,    
 				  primary key(show_id,genre_id),		
-                  foreign key(show_id) references netflix_data(show_id),
+                  foreign key(show_id) references netflix(show_id),
 				  foreign key(genre_id) references genres(genre_id));
 
 INSERT INTO show_genre (show_id, genre_id)

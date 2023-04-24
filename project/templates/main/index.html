@@ -243,21 +243,7 @@
       <a href="{{ url_for('patientUtility.updatepatient') }}" class="navbar-item">
           Profile
       </a>
-
       {% endif %}
-      {% if (current_user.is_authenticated  and name == 'doctor') %}
-      <a href="{{ url_for('doctorUtility.doctor') }}" class="navbar-item">
-          Profile
-      </a>
-      {% endif %}
-
-      {% if (current_user.is_authenticated  and name == 'insuranceprovider') %}
-      <!-- <a href="{{ url_for('doctorUtility.doctor') }}" class="navbar-item">
-          Profile
-      </a> -->
-      {% endif %}
-
-
       {% if not current_user.is_authenticated %}
       <a href="{{ url_for('routes.login') }}" class="navbar-item">
           Sign In

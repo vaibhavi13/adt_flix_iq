@@ -255,16 +255,7 @@
        <a href="{{ url_for('patientUtility.patient') }}" class="navbar-item">
           Home
        </a>
-        <a href="{{ url_for('patientUtility.updatepatient') }}" class="navbar-item">
-            Profile
-        </a>
-        <a href="{{ url_for('patientUtility.InsurancePackage') }}" class="navbar-item">
-            Insurance Packages
-        </a>
-        <a href="{{ url_for('patientUtility.viewAppointments') }}" class="navbar-item">
-            My Appointments
-        </a>
-  
+    
         {% endif %}
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('routes.logout') }}" class="navbar-item">
@@ -285,49 +276,38 @@
     {% endif %}  
     {% endwith %}
 <section class="packages">
-  {% for record in recomRecords%}
   <div class="container">
     <div class="row">
       <div class="col-8">
         <h1>Recommended Packages by Insurance Providers:</h1>
         <strong>Package Name:</strong>
-        {{ record.package_name }}<br/>
-  
+       
         <strong>Package Description</strong>
-        {{ record.package_description}}<br/>
-      
+       
         <strong>Insurnace Duration</strong>
-        {{ record.insurance_duration }}<br/>
-      
+       
         <strong>Package provided for ages between:</strong>
-        {{ record.age }}<br/>
-      
+       
         <strong>Price of the package in dollars</strong>
-        {{ record.price  }}<br/>
-        <form action="{{ url_for('patientUtility.InsurancePackageBuy',token = record.price, insur_id=record.id, _external=True)}}", method="get">  
+       
+        <form action="{{ url_for('netflixUtility.createRecord',token = record.price, insur_id=record.id, _external=True)}}", method="get">  
             <button> Buy this package </button>
         </form>
   {% endfor %}
   <h1>Packages available for you</h1>
-  {% for record in existingPack%}
   <div class="container">
     <div class="row">
       <div class="col-8">
         <strong>Package Name:</strong>
-        {{ record.package_name }}<br/>
   
         <strong>Package Description</strong>
-        {{ record.package_description}}<br/>
       
         <strong>Insurnace Duration</strong>
-        {{ record.insurance_duration }}<br/>
       
         <strong>Package provided for ages between:</strong>
-        {{ record.age }}<br/>
       
         <strong>Price of the package in dollars</strong>
-        {{ record.price  }}<br/>
-        <form action="{{ url_for('patientUtility.InsurancePackageBuy',token = record.price, insur_id=record.id,_external=True)}}", method="get">  
+        <form action="{{ url_for('netflixUtility.createRecord',token = record.price, insur_id=record.id,_external=True)}}", method="get">  
             <button> Buy this package </button>
         </form>
   {% endfor %}  
