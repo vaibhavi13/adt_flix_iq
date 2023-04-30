@@ -2,165 +2,157 @@
 <html lang="en">
 <head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
-
-*, body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-html, body {
-    height: 100%;
-    background-color: #e1e9ef;
-    overflow: hidden;
-}
-
-
-.form-holder {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      min-height: 100vh;
-}
-
-.form-holder .form-content {
-    position: relative;
-    text-align: center;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    align-items: center;
-    padding: 60px;
-}
-
-.form-content .form-items {
-    border: 3px solid #fff;
-    padding: 40px;
-    display: inline-block;
-    width: 100%;
-    min-width: 540px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    text-align: left;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-}
-
-.form-content h3 {
-    color: rgb(6, 72, 135);
-    text-align: left;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.form-content h3.form-title {
-    margin-bottom: 30px;
-}
-
-.form-content p {
-    color: rgb(6, 72, 135);
-    text-align: left;
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 20px;
-    margin-bottom: 30px;
-}
-
-
-.form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
-    color: rgb(6, 72, 135);
-}
-
-.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
-    width: 100%;
-    padding: 9px 10px;
-    text-align: left;
-    border: 0;
-    outline: 0;
-    border-radius: 6px;
-    background-color: #fff;
-    font-size: 15px;
-    font-weight: 300;
-    color: rgb(6, 72, 135);
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    margin-top: 16px;
-}
-
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
-    background-color: #495056;
-    outline: none !important;
-    border: none !important;
-     box-shadow: none;
-}
-.form-content button,a{
-      background-color: rgba(244, 238, 238, 0.912);
-      border-radius: 8px;
-      border-width: 0;
-      color: rgb(6, 72, 135);
-      cursor: pointer;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 20px;
-      padding: 10px 12px;
-      text-align: center;
-      transition: all 200ms;
-      vertical-align: baseline;
-      white-space: nowrap;
-}
-
-
-.form-content textarea {
-    position: static !important;
-    width: 100%;
-    padding: 8px 20px;
-    border-radius: 6px;
-    text-align: left;
-    background-color: #fff;
-    border: 0;
-    font-size: 15px;
-    font-weight: 300;
-    color: rgb(6, 72, 135);
-    outline: none;
-    resize: none;
-    height: 120px;
-    -webkit-transition: none;
-    transition: none;
-    margin-bottom: 14px;
-}
-
-.form-content textarea:hover, .form-content textarea:focus {
-    border: 0;
-    background-color: #ebeff8;
-    color: rgb(6, 72, 135);
-}
-
-.mv-up{
-    margin-top: -9px !important;
-    margin-bottom: 8px !important;
-}
-
-.invalid-feedback{
-    color: #ff606e;
-}
-
-.valid-feedback{
-   color: #2acc80;
-}
+    .form-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+      
+      .form-holder {
+        background: black;
+        border-radius: 10px;
+        max-width: 600px;
+        width: 100%;
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      }
+      
+      .form-content {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .form-items {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+      }
+      
+      .form-items label {
+        margin-bottom: 5px;
+      }
+      
+      .form-items input,
+      .form-items select {
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      
+      .form-items select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center/12px;
+      }
+      
+      .form-items input[type="date"]::-webkit-inner-spin-button {
+        display: none;
+      }
+      
+      .form-items button {
+        background: black;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+      }
+      
+      .form-items a {
+        margin-top: 15px;
+        text-align: center;
+        color: red;
+      }
+      
+      @media only screen and (max-width: 600px) {
+        .form-holder {
+          padding: 20px;
+        }
+      }
+      .form-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+      
+      .form-holder {
+        background: #fff;
+        border-radius: 10px;
+        max-width: 900px;
+        width: 100%;
+        padding: 100px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      }
+      
+      .form-content {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .form-items {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+      }
+      
+      .form-items label {
+        margin-bottom: 5px;
+      }
+      
+      .form-items input,
+      .form-items select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      
+      .form-items select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center/12px;
+      }
+      
+      .form-items input[type="date"]::-webkit-inner-spin-button {
+        display: none;
+      }
+      
+      .form-items button {
+        background: red;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+      }
+      
+      .form-items a {
+        margin-top: 15px;
+        text-align: center;
+        color: red;
+      }
+      
+      @media only screen and (max-width: 600px) {
+        .form-holder {
+          padding: 20px;
+        }
+      }
+            
     </style>
 
 </head>
@@ -172,28 +164,69 @@ html, body {
             <div class="form-holder"> 
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Create Record</h3>
+                        <h3>{{action}}</h3>
                         <div class="col-md-12">
                             <div class="control">
-                                <label for="type">Show Type</label>
+                                <br><strong><label for="type">Show Type</strong><br></label>
                                 <select id ="type" name="type">
-                                    <option value="TV Show">TV Show</option>
-                                    <option value="Movie">Movie</option>
+                                    {% for type in types %}  
+                                        {% if (type[0] == record.show_type) %}
+                                        <option value="{{ type[0] }}" selected>{{ type[0] }}</option>
+                                        {% else %}
+                                        <option value="{{ type[0] }}">{{ type[0] }}</option> 
+                                        {% endif %}
+                                    {% endfor %}
+                                       
                                 </select>
                             </div>
 
-                            <input class="form-control" type="text" name="title" placeholder="Enter Title" required>
-                            <input class="form-control" type="text" name="director" placeholder="Enter Director" required>
-                            <input class="form-control" type="text" name="actor" placeholder="Enter Actors" required>
-                            <input class="form-control" type="text" name="country" placeholder="Enter Country" required>
+                            <strong><label>Enter Title</label></strong><br>
+                            <input class="form-control" type="text" name="title" placeholder="Enter Title" value = "{{record.title}}" required>
+                            <strong><label>Enter Director</label></strong><br>
+                            <input class="form-control" type="text" name="director" placeholder="Enter Director" value = "{{record_director}}" required>
+                            <strong><label>Enter Actors</label></strong><br>
+                            <input class="form-control" type="text" name="actor" placeholder="Enter Actors" value = "{{record_actor}}" required>
+                            <strong><label>Enter Country</label></strong><br>
+                            <input class="form-control" type="text" name="country" placeholder="Enter Country" value = "{{record_country}}" required>
+                            <strong><label>Select Date</label></strong><br>
+                            {% if action == 'Create Record' %}
                             <input  placeholder="Select Date" type="text" onfocus="(this.type = 'date')"  name="date_added" class="form-control" id="date_added" max="2030-12-31"  required >
                             <br><strong>Enter Release Year</strong><br>
                             <input class="form-control" type="number" name="release_year" placeholder="Enter Release Year" required>
-                            <input class="form-control" type="text" name="rating" placeholder="Enter Rating" required>
-                            <input class="form-control" type="text" name="duration" placeholder="Enter Duration" required>
-                            <input class="form-control" type="text" name="genre" placeholder="Enter Genre" required>
-                            <input class="form-control" type="text" name="description" placeholder="Enter Description" required>
+                           {% endif %}
+                            <div class="control">
+                                <label for="rating"><strong>Rating</strong></label>
+                                <select id ="rating" name="rating">
+                                    <option value="select"></option>
+                                    {% for rating in ratings %}  
+                                        {% if (rating[0] == record.rating) %}
+                                        <option value="{{ rating[0] }}" selected>{{ rating[0] }}</option>
+                                        {% else %}
+                                        <option value="{{ rating[0] }}">{{ rating[0] }}</option> 
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <strong>Enter Duration</strong>
+                            <input class="form-control" type="text" name="duration" placeholder="Enter Duration" value="{{record.duration}}" required>
+                            <div class="control">
+                                <strong><label for="genre">Genre</label></strong><br>
+                                <select id ="genre" name="genre">
+                                    <option value="select"></option>
+                                    {% for genre in genres %}  
+                                        {% if (genre[0] == record_genre) %}
+                                        <option value="{{ genre[0] }}" selected>{{ genre[0] }}</option>
+                                        {% else %}
+                                        <option value="{{ genre[0] }}">{{ genre[0] }}</option> 
+                                        {% endif %}
+                                    {% endfor %} 
+                                </select>
+                            </div>
+                        <strong>Enter Description</strong><br>
+                            <input class="form-control" type="text" name="description" placeholder="Enter Description" value="{{record.description}}" required>
                             <br>
+                            <input hidden type="text" name="action" value="{{ action }}">
+                            <input hidden type="text" name ="show_id" value="{{ record.show_id}}">
                             <button class="button is-block is-info is-large is-fullwidth">Submit</button>
                             <a href="{{ url_for('netflixUtility.viewNetflix') }}">
                                 Back

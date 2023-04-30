@@ -1128,9 +1128,9 @@ button.bg-danger:hover {
         padding-right: 20px;
     }
     .row.row-grid > div {
-        -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
-        max-width: 50%;
+        -ms-flex: 0 0 33%;
+        flex: 0 0 33%;
+        max-width: 33%;
     }
     .circle-bar {
         margin: 0 0 15px;
@@ -1394,6 +1394,57 @@ html{
 }
 
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col-4 {
+    flex-basis: calc(33.33% - 10px);
+    margin-right: 10px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 20px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #0069d9;
+}
+
   
     </style>
 	
@@ -1438,79 +1489,47 @@ html{
                                 <form method="POST" action="/searchNetflix">
                                    
                              
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <b><label for="type">Show Type</label></b>
-                                                <select id ="type" name="type">
-                                                <option value="select"></option>
-                                                {% for type in types %}  
-                                                    <option value="{{ type[0] }}">{{ type[0] }}</option>
-                                                    {% endfor %}    
-                                                    <option value="select"></option>
-                                                    <option value="option1">option1</option>
-                                                    <option value="option2">option2</option>   
-                                                </select>
-    </div>
-                                            <div class="col-6">                                                <b><text>Show Title</text></b>
-                                                <input type="text" name="searchquery">
-    </div>
-                                            <div class="w-100"></div>
-                                            <div class="col-6">                                          <b><text>Actor</text></b>
-                                                <input type="text" name="searchquery">
-       </div>
-                                            <div class="col-6">                                   <b><text>Director</text></b>
-                                                <input type="text" name="searchquery">
-            </div>
-                                            <div class="w-100"></div>
-                                            <div class="col-6">                          <b><label for="genre">Genre</label></b>
-                                                <select id ="genre" name="genre">
-                                                <option value="select"></option>
-                                                {% for genre in genres %}  
-                                                    <option value="{{ genre[0] }}">{{ genre[0] }}</option>
-                                                    {% endfor %}       
-                                                    <option value="select"></option>
-                                                    <option value="option1">option1</option>
-                                                    <option value="option2">option2</option>  
-                                                </select></div>
-                                            <div class="col-6"><b><label for="rating">Rating</label></b>
-                                                <select id ="rating" name="rating">
-                                                <option value="select"></option>
-                                                {% for rating in ratings %}  
-                                                    <option value="{{ genre[0] }}">{{ rating[0] }}</option>
-                                                    {% endfor %}     
-                                                    <option value="select"></option>
-                                                    <option value="option1">option1</option>
-                                                    <option value="option2">option2</option>  
-                                                </select></div>
-                                            <div class="w-100"></div>
-                                            <div class="col-6">            <b><label for="location">Country</label></b>
-                                                <select id ="location" name="location">
-                                                <option value="select"></option>
-                                                {% for location in locations %}  
-                                                    <option value="{{ location[0] }}">{{ location[0] }}</option>
-                                                    {% endfor %}  
-                                                    <option value="select"></option>
-                                                    <option value="option1">option1</option>
-                                                    <option value="option2">option2</option>       
-                                                </select></div>
-                                             <div class="col-6">  <b><label for="release_year_range">Release year</label></b>
-                                                <select id ="release_year_range" name="release_year_range">
-                                                <option value="select"></option>
-                                                    <option value="option1">option1</option>
-                                                    <option value="option2">option2</option>
-                                                          
-                                                </select></div>
-                                          </div>
-       
+                                    <div class="search-container">
+                                        <form method="POST" action="/searchNetflix">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <b><label for="type">Show Type</label></b>
+                                                        <select id="type" name="type">
+                                                            <option value="select"></option>
+                                                            <option value="TV Show">TV Show</option>
+                                                            <option value="Movie">Movie</option>   
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <b><label for="rating">Rating</label></b>
+                                                        <select id="rating" name="rating">
+                                                            <option value="select"></option>
+                                                            {% for rating in ratings %}  
+                                                                <option value="{{ rating[0] }}">{{ rating[0] }}</option>
+                                                            {% endfor %}      
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <b><label for="release_year">Release year</label></b>
+                                                        <select id="release_year" name="release_year">
+                                                            <option value="select"></option>
+                                                            {% for release_year in release_years %}  
+                                                            <option value="{{ release_year[0] }}">{{ release_year[0] }}</option>
+                                                            {% endfor %}         
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row ">
+                                                    <div class="col-4"></div>
+                                                    <div class="col-4"> <button type="submit" class="btn btn-primary btn-block search-btn"><i class="fas fa-search"></i>SEARCH </button></div>
+                                                    <div class="col-4"></div>
+                                               
+                                            </div>
                                         </div>
-                                        <div class="col- text-right">
-                                            <button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i></button>
-                                          </div>                     
-  
-                             </form>
-                          </div>
-                        </div>
+                                        </form>
+                                    </div>
+                                    
 					</div>
 				</div>
 
@@ -1518,40 +1537,41 @@ html{
       <section class="card-view">
         <div class="container">
           <div class="box">
-
+            {% for record in records %}  
             <div class="col-lg-6 profile-box">
               <div class="media d-flex">
                 <img style="width: 160px; height: 200px;" class ="mr-4" src="static/images/netflix_collage.jpg" alt="">
                 <div class="media-body flex-grow-1">         
-                  <h2> Type : type_text</h2>
+                  <h2> Type : {{ record[1] }}</h2>
                   <br>
-                  <h2> Title : title_text</h2>
+                  <h2> Title : {{ record[2] }}</h2>
                   <br>
-                  <h2> Director : director_text</h2>
+                  <h2> Description : {{ record[9] }}</h2>
                   <br>
-                  <h2> Actor : actor_text</h2>
+                  <h2> Date added : {{ record[5] }}</h2>
                   <br>
-                  <h2> Produced in countries : countries_text</h2>
+                  <h2> Release year : {{ record[6] }}</h2>
                   <br>
-                  <h2> Date added : date_added_text</h2>
+                  <h2> Rating : {{ record[7] }}</h2>
                   <br>
-                  <h2> Release year : release_year_text</h2>
+                  <h2> Duration : {{ record[8] }}</h2>
                   <br>
-                  <h2> Rating : rating_text</h2>
+                  <h2> Director : {{ record[3] }}</h2>
                   <br>
-                  <h2> Duration : duration_text</h2>
+                  <h2> Actor : {{ record[4] }}</h2>
                   <br>
-                  <h2> Genres : genres_text</h2>
-                  <br>
-                  <h2> Description : description_text</h2>
-                  <br>
-                  <a href="{{ url_for('netflixUtility.updateRecord') }}">
+                  <a href="{{ url_for('netflixUtility.updateRecord', show_id = record[0], _external=True)}}">
                     <button type="submit" name="button" style="background-color :black; color: white;">Update Record</button>
                 </a>
+                <br>
+                <a href="{{ url_for('netflixUtility.deleteRecord', show_id = record[0], _external=True)}}">
+                    <button type="submit" name="button" style="background-color :black; color: white;">Delete Record</button>
+                </a>
                 </div>
-                
           </div>
         </div>
+        {% endfor %}         
+
         </div>
       </div>
       </section>

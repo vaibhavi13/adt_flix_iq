@@ -121,6 +121,18 @@ GROUP BY show_id, genre
 
 select * from show_genre_view ;
 
+-- create table ratings
+drop table if exists ratings; 
+
+CREATE TABLE ratings (
+  rating_id SERIAL PRIMARY KEY,
+  rating_name VARCHAR(255) UNIQUE
+);
+
+INSERT INTO ratings (rating_name)
+select distinct rating from netflix;
+
+select * from ratings;
 
 -- create show_genre table
 drop table if exists show_genre;

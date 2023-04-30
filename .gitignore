@@ -28,3 +28,5 @@ htmlcov/
 *.zip
 */.DS_Store
 */*.pyc
+
+*/static/images/*
