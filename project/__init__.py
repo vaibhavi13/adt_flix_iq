@@ -13,7 +13,7 @@ login_manager.login_message_category = 'info'
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'root'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Jonsnow1310*@localhost:5432/ADT'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://adt_flix_iq_user:LDLPGzZACAXG6ueph4J0hXYXGRgUNWP1@dpg-ch787rqk728iqr3jk7og-a/adt_flix_iq'
     db.init_app(app)
     login_manager.init_app(app)
     login_manager.session_protection = "strong"
