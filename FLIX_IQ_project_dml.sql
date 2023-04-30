@@ -23,6 +23,11 @@ CREATE TABLE netflix_data (
 
 select * from netflix_data;
 
+-- Remove title row if it got added 
+
+delete from netflix_data
+where date_added = 'date_added';
+
 -- Normalizing table 
 
 -- Contributed by Shambhavi Shukla
