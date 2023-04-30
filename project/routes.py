@@ -54,10 +54,11 @@ def login_post():
     remember = True if request.form.get('remember') else False
     print('SE project')
     user = User.query.filter_by(email=email).first()
-    if user == None:
+    if user == None :
         flash('Invalid username or password')
         return render_template('login.html')
     else:
+        login_user(user, remember=remember)
         return redirect(url_for('netflixUtility.viewNetflix'))   
 
 @routes.route('/logout')
